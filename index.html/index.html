@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Decizie 20%-80%</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+            background-color: #f0f0f0;
+        }
+        #raspuns{
+            font-size: 48px;
+            margin-top: 20px;
+        }
+        .da{color:green;}
+        .nu{color:red;}
+        button{
+            font-size: 24px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gandeste-te la o intrebare si apasa pe buton</h1>
+    <button onclick="decide()">Află răspunsul</button>
+    <div id="raspuns"></div>
+
+    <script>
+        function decide() {
+            // 20% "Da",80% "Nu"
+            const sanseDa = 20;
+            const num = Math.floor(Math.random() * 100);
+            const rezultat = (num < sanseDa) ? "Da" : "Nu";
+    
+            //afiseaza rezultatul in div si pune cculoarea corespunzatoare
+            const div = document.getElementById('raspuns');
+            div.innerHTML = rezultat;
+            div.className = rezultat.toLowerCase(); // fix: use lowercase for CSS class
+        }
+    </script>
+</body>
+</html>
