@@ -92,19 +92,46 @@
 
     /* chipuri */
     .chip {
-      width: 50px;
-      height: 50px;
+      width: 70px;
+      height: 70px;
       border-radius: 50%;
-      border: 3px solid white;
       display: flex;
       justify-content: center;
       align-items: center;
       font-weight: bold;
-      font-size: 16px;
-      cursor: pointer;
+      font-size: 18px;
       color: white;
-      box-shadow: 0 0 6px rgba(0,0,0,0.6);
-      transition: transform 0.1s;
+      position: relative;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0,0,0,0.6);
+    }
+
+    /* cerc interior */
+    .chip::before {
+      content: "";
+      position: absolute;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      border: 2px dashed white;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* dungile albe de pe margine */
+    .chip::after {
+      content: "";
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: repeating-conic-gradient(
+        white 0deg 10deg,
+        transparent 10deg 30deg
+      );
+      -webkit-mask: radial-gradient(circle 30px, transparent 28px, black 29px);
+      mask: radial-gradient(circle 30px, transparent 28px, black 29px);
     }
     .chip:active { transform: scale(0.9); }
 
@@ -114,6 +141,11 @@
     .chip-50  { background: dodgerblue; }
     .chip-100 { background: black; }
     .chip-500 { background: purple; }
+
+    .chip span {
+      position: relative;
+      z-index: 2;
+    }
 
     /* tabel central suma */
     .sum-box {
@@ -246,8 +278,9 @@
     }
   });
 });
-  document.querySelectorAll("td").forEach(cell => {
-  cell.addEventListener("dblclick", () => {
+document.querySelectorAll("td").forEach(cell => {
+  cell.addEventListener("contextmenu", (e) => {
+    e.preventDefault(); // Prevent the default context menu
     const highlight = cell.querySelector(".highlight");
     if (highlight) {
       highlight.textContent = "";
