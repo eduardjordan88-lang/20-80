@@ -33,20 +33,8 @@
             background-color: rgb(0, 0, 200);
         }
 
-        .navbar {
-  background-color: #002244;   /* albastru închis */
-  border-bottom: 2px solid white;
-  height: 50px;                /* înălțimea barei */
-  width: 100%;                 /* să ocupe toată lățimea paginii */
-  position: fixed;             /* o fixează sus */
-  top: 0;
-  right: 0;
-  display: flex;
-  justify-content: flex-end;   /* conținutul merge în dreapta */
-  align-items: center;         /* centrat pe verticală */
-  padding: 0 20px;             /* spațiu interior stânga-dreapta */
-  z-index: 1000;               /* ca să fie deasupra altor elemente */
-}
+       
+
 
     /* iconița de utilizator */
     .user-icon {
@@ -64,8 +52,24 @@
       position: relative;
     }
 
-    /* iconița setări */
-.settings-icon {
+    /* bara de navigație */
+.navbar {
+  background-color: #002244;
+  border-bottom: 2px solid white;
+  height: 50px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 1000;
+}
+
+/* stil general pentru iconițe */
+.navbar div {
   width: 35px;
   height: 35px;
   border-radius: 50%;
@@ -79,6 +83,18 @@
   cursor: pointer;
 }
 
+/* spațierea dintre iconițe */
+.settings-icon {
+  margin-left: 15px;
+}
+
+.user-icon {
+  margin-left: 15px;
+}
+
+.notifications-icon {
+  margin-left: 15px;
+}
     /* meniul dropdown */
     .dropdown {
       position: absolute;
@@ -103,6 +119,8 @@
     .dropdown a:hover {
       background: #eee;
     }
+
+    
        </style>
 </head>
 <body>
