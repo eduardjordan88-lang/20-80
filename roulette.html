@@ -27,13 +27,13 @@
       color: white;
       width: 40px;
       height: 40px;
-      position: relative; /* ca să putem pune cercul galben în mijloc */
+      position: relative;
       cursor: pointer;
       transition: transform 0.1s;
     }
 
     td:active {
-      transform: scale(0.9); /* efect de apăsare */
+      transform: scale(0.9);
     }
 
     /* culori pentru numere */
@@ -44,23 +44,31 @@
     /* celulele mari pentru pariuri */
     .bet { background-color: #f5f5f5; color: black; }
 
-    /* cerc galben (ascuns inițial) */
+    /* monedă galbenă */
     .highlight {
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 20px;
-      height: 20px;
-      margin-left: -10px; /* jumătate din lățime */
-      margin-top: -10px;  /* jumătate din înălțime */
-      background-color: yellow;
+      width: 24px;
+      height: 24px;
+      margin-left: -12px;
+      margin-top: -12px;
+      background: radial-gradient(circle at 30% 30%, #fff176, #fbc02d);
+      border: 2px solid #b8860b;
       border-radius: 50%;
+      box-shadow: 0 0 6px rgba(255, 215, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 10px;
+      font-weight: bold;
+      color: #5d4037;
       opacity: 0;
       transition: opacity 0.2s;
-      pointer-events: none; /* să nu blocheze click-ul */
+      pointer-events: none;
     }
 
-    /* activare highlight */
+    /* activare monedă */
     .active .highlight {
       opacity: 1;
     }
@@ -70,76 +78,74 @@
 
   <table>
     <tr>
-      <td rowspan="3" class="green">0<div class="highlight"></div></td>
-      <td class="red">3<div class="highlight"></div></td>
-      <td class="black">6<div class="highlight"></div></td>
-      <td class="red">9<div class="highlight"></div></td>
-      <td class="red">12<div class="highlight"></div></td>
-      <td class="black">15<div class="highlight"></div></td>
-      <td class="red">18<div class="highlight"></div></td>
-      <td class="red">21<div class="highlight"></div></td>
-      <td class="black">24<div class="highlight"></div></td>
-      <td class="red">27<div class="highlight"></div></td>
-      <td class="red">30<div class="highlight"></div></td>
-      <td class="black">33<div class="highlight"></div></td>
-      <td class="red">36<div class="highlight"></div></td>
-      <td rowspan="3" class="bet">2 to 1<div class="highlight"></div></td>
+      <td rowspan="3" class="green">0<div class="highlight">20</div></td>
+      <td class="red">3<div class="highlight">20</div></td>
+      <td class="black">6<div class="highlight">20</div></td>
+      <td class="red">9<div class="highlight">20</div></td>
+      <td class="red">12<div class="highlight">20</div></td>
+      <td class="black">15<div class="highlight">20</div></td>
+      <td class="red">18<div class="highlight">20</div></td>
+      <td class="red">21<div class="highlight">20</div></td>
+      <td class="black">24<div class="highlight">20</div></td>
+      <td class="red">27<div class="highlight">20</div></td>
+      <td class="red">30<div class="highlight">20</div></td>
+      <td class="black">33<div class="highlight">20</div></td>
+      <td class="red">36<div class="highlight">20</div></td>
+      <td rowspan="3" class="bet">2 to 1<div class="highlight">20</div></td>
     </tr>
     <tr>
-      <td class="black">2<div class="highlight"></div></td>
-      <td class="red">5<div class="highlight"></div></td>
-      <td class="black">8<div class="highlight"></div></td>
-      <td class="black">11<div class="highlight"></div></td>
-      <td class="red">14<div class="highlight"></div></td>
-      <td class="black">17<div class="highlight"></div></td>
-      <td class="black">20<div class="highlight"></div></td>
-      <td class="red">23<div class="highlight"></div></td>
-      <td class="black">26<div class="highlight"></div></td>
-      <td class="black">29<div class="highlight"></div></td>
-      <td class="red">32<div class="highlight"></div></td>
-      <td class="black">35<div class="highlight"></div></td>
+      <td class="black">2<div class="highlight">20</div></td>
+      <td class="red">5<div class="highlight">20</div></td>
+      <td class="black">8<div class="highlight">20</div></td>
+      <td class="black">11<div class="highlight">20</div></td>
+      <td class="red">14<div class="highlight">20</div></td>
+      <td class="black">17<div class="highlight">20</div></td>
+      <td class="black">20<div class="highlight">20</div></td>
+      <td class="red">23<div class="highlight">20</div></td>
+      <td class="black">26<div class="highlight">20</div></td>
+      <td class="black">29<div class="highlight">20</div></td>
+      <td class="red">32<div class="highlight">20</div></td>
+      <td class="black">35<div class="highlight">20</div></td>
     </tr>
     <tr>
-      <td class="red">1<div class="highlight"></div></td>
-      <td class="black">4<div class="highlight"></div></td>
-      <td class="red">7<div class="highlight"></div></td>
-      <td class="black">10<div class="highlight"></div></td>
-      <td class="black">13<div class="highlight"></div></td>
-      <td class="red">16<div class="highlight"></div></td>
-      <td class="red">19<div class="highlight"></div></td>
-      <td class="black">22<div class="highlight"></div></td>
-      <td class="red">25<div class="highlight"></div></td>
-      <td class="black">28<div class="highlight"></div></td>
-      <td class="black">31<div class="highlight"></div></td>
-      <td class="red">34<div class="highlight"></div></td>
+      <td class="red">1<div class="highlight">20</div></td>
+      <td class="black">4<div class="highlight">20</div></td>
+      <td class="red">7<div class="highlight">20</div></td>
+      <td class="black">10<div class="highlight">20</div></td>
+      <td class="black">13<div class="highlight">20</div></td>
+      <td class="red">16<div class="highlight">20</div></td>
+      <td class="red">19<div class="highlight">20</div></td>
+      <td class="black">22<div class="highlight">20</div></td>
+      <td class="red">25<div class="highlight">20</div></td>
+      <td class="black">28<div class="highlight">20</div></td>
+      <td class="black">31<div class="highlight">20</div></td>
+      <td class="red">34<div class="highlight">20</div></td>
     </tr>
     <tr>
-      <td colspan="4" class="bet">1st 12<div class="highlight"></div></td>
-      <td colspan="4" class="bet">2nd 12<div class="highlight"></div></td>
-      <td colspan="4" class="bet">3rd 12<div class="highlight"></div></td>
-      <td rowspan="2" class="bet">2 to 1<div class="highlight"></div></td>
+      <td colspan="4" class="bet">1st 12<div class="highlight">20</div></td>
+      <td colspan="4" class="bet">2nd 12<div class="highlight">20</div></td>
+      <td colspan="4" class="bet">3rd 12<div class="highlight">20</div></td>
+      <td rowspan="2" class="bet">2 to 1<div class="highlight">20</div></td>
     </tr>
     <tr>
-      <td colspan="2" class="bet">1 to 18<div class="highlight"></div></td>
-      <td colspan="2" class="bet">EVEN<div class="highlight"></div></td>
-      <td colspan="2" class="bet">🔴<div class="highlight"></div></td>
-      <td colspan="2" class="bet">⚫<div class="highlight"></div></td>
-      <td colspan="2" class="bet">ODD<div class="highlight"></div></td>
-      <td colspan="2" class="bet">19 to 36<div class="highlight"></div></td>
+      <td colspan="2" class="bet">1 to 18<div class="highlight">20</div></td>
+      <td colspan="2" class="bet">EVEN<div class="highlight">20</div></td>
+      <td colspan="2" class="bet">🔴<div class="highlight">20</div></td>
+      <td colspan="2" class="bet">⚫<div class="highlight">20</div></td>
+      <td colspan="2" class="bet">ODD<div class="highlight">20</div></td>
+      <td colspan="2" class="bet">19 to 36<div class="highlight">20</div></td>
     </tr>
   </table>
 
   <script>
-    // La click, adaugă clasa "active" și arată cercul galben
+    // La click, toggle ON/OFF monedă
     document.querySelectorAll("td").forEach(cell => {
       cell.addEventListener("click", () => {
-        // elimină highlight-ul de pe alte celule
-        document.querySelectorAll("td").forEach(c => c.classList.remove("active"));
-        // adaugă highlight pe celula apăsată
-        cell.classList.add("active");
+        cell.classList.toggle("active");
       });
     });
   </script>
 
 </body>
 </html>
+
