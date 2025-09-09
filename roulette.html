@@ -86,7 +86,7 @@
     .chip-container {
       display: flex;
       align-items: center;
-      margin: 20px 0;
+      margin-top: 200px 0;
       gap: 20px;
     }
 
@@ -163,7 +163,7 @@
 
     <!-- tabel central suma -->
     <div class="sum-box" id="sumBox">0</div>
-
+  
     <!-- buton minus -->
     <div class="minus-box" id="minusBtn">-</div>
   </div>
@@ -281,6 +281,42 @@
       clearInterval(interval);
       clearInterval(timer);
     });
+   // Editable sum-box logic
+  sumBox.addEventListener("dblclick", () => {
+    const input = document.createElement("input");
+    input.type = "number";
+    input.value = sum;
+    input.style.width = "100%";
+    input.style.height = "100%";
+    input.style.fontSize = "20px";
+    input.style.textAlign = "center";
+    input.style.border = "none";
+    input.style.background = "red";
+    input.style.color = "white";
+    input.style.fontWeight = "bold";
+    input.style.borderRadius = "8px";
+
+    sumBox.textContent = "";
+    sumBox.appendChild(input);
+    input.focus();
+
+    function updateSum() {
+      let newVal = parseInt(input.value);
+      if (!isNaN(newVal) && newVal >= 0) {
+        sum = newVal;
+        sumBox.textContent = sum;
+      } else {
+        sumBox.textContent = sum;
+      }
+    }
+
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        updateSum();
+      }
+    });
+    input.addEventListener("blur", updateSum);
+  }); 
   </script>
 
 
