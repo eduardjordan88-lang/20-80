@@ -7,7 +7,7 @@
         body {
             margin: 0;
             height: 100vh;
-            background-color: red;
+            background-color: #f0f0f0;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -32,6 +32,56 @@
             transform: scale(1.05);
             background-color: rgb(0, 0, 200);
         }
+
+        .navbar {
+      background-color: #002244; /* albastru închis */
+      border-bottom: 2px solid white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    /* iconița de utilizator */
+    .user-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
+      font-weight: bold;
+      color: #002244;
+      cursor: pointer;
+      position: relative;
+    }
+
+    /* meniul dropdown */
+    .dropdown {
+      position: absolute;
+      top: 40px;
+      right: 0;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      display: none;
+      min-width: 150px;
+    }
+
+    .dropdown a {
+      display: block;
+      padding: 10px;
+      text-decoration: none;
+      color: #002244;
+      font-weight: bold;
+    }
+
+    .dropdown a:hover {
+      background: #eee;
+    }
        </style>
 </head>
 <body>
@@ -40,5 +90,30 @@
     <div class="box" onclick="window.location.href='roulette.html'">Intra la
   Roulette
     </div>
+    <div class="navbar">
+    <div class="user-icon" id="userIcon">👤</div>
+    <div class="dropdown" id="dropdownMenu">
+      <a href="#">Login</a>
+      <a href="#">Sign Up</a>
+      <a href="#">Profil</a>
+    </div>
+  </div>
+
+<script>
+    const userIcon = document.getElementById("userIcon");
+    const dropdownMenu = document.getElementById("dropdownMenu");
+
+    userIcon.addEventListener("click", () => {
+      dropdownMenu.style.display =
+        dropdownMenu.style.display === "block" ? "none" : "block";
+    });
+
+    // închide meniul dacă faci click în afara lui
+    window.addEventListener("click", (e) => {
+      if (!userIcon.contains(e.target) && !dropdownMenu.contains(e.target)) {
+        dropdownMenu.style.display = "none";
+      }
+    });
+  </script>
 </body>
 </html>   
