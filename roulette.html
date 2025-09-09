@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <title>Roulette</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end; /* pune tabelul jos */
+      background-color: darkgreen; /* fundalul mesei */
+    }
+
+    table {
+      border-collapse: collapse;
+      margin-bottom: 20px;
+      transform: scale(0.9); /* micșorare (poți schimba între 0.8 și 1.2) */
+    }
+
+    td {
+      border: 2px solid white;
+      text-align: center;
+      font-weight: bold;
+      font-size: 16px;
+      color: white;
+      width: 40px;
+      height: 40px;
+    }
+
+    /* culori pentru numere */
+    .red { background-color: red; }
+    .black { background-color: black; }
+    .green { background-color: green; }
+
+    /* celulele mari pentru pariuri */
+    .bet { background-color: #f5f5f5; color: black; }
+  </style>
+</head>
+<body>
+
+  <table>
+    <tr>
+      <td rowspan="3" class="green">0</td>
+      <td class="red">3</td>
+      <td class="black">6</td>
+      <td class="red">9</td>
+      <td class="red">12</td>
+      <td class="black">15</td>
+      <td class="red">18</td>
+      <td class="red">21</td>
+      <td class="black">24</td>
+      <td class="red">27</td>
+      <td class="red">30</td>
+      <td class="black">33</td>
+      <td class="red">36</td>
+      <td rowspan="3" class="bet">2 to 1</td>
+    </tr>
+    <tr>
+      <td class="black">2</td>
+      <td class="red">5</td>
+      <td class="black">8</td>
+      <td class="black">11</td>
+      <td class="red">14</td>
+      <td class="black">17</td>
+      <td class="black">20</td>
+      <td class="red">23</td>
+      <td class="black">26</td>
+      <td class="black">29</td>
+      <td class="red">32</td>
+      <td class="black">35</td>
+    </tr>
+    <tr>
+      <td class="red">1</td>
+      <td class="black">4</td>
+      <td class="red">7</td>
+      <td class="black">10</td>
+      <td class="black">13</td>
+      <td class="red">16</td>
+      <td class="red">19</td>
+      <td class="black">22</td>
+      <td class="red">25</td>
+      <td class="black">28</td>
+      <td class="black">31</td>
+      <td class="red">34</td>
+    </tr>
+    <tr>
+      <td colspan="4" class="bet">1st 12</td>
+      <td colspan="4" class="bet">2nd 12</td>
+      <td colspan="4" class="bet">3rd 12</td>
+      <td rowspan="2" class="bet">2 to 1</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="bet">1 to 18</td>
+      <td colspan="2" class="bet">EVEN</td>
+      <td colspan="2" class="bet">🔴</td>
+      <td colspan="2" class="bet">⚫</td>
+      <td colspan="2" class="bet">ODD</td>
+      <td colspan="2" class="bet">19 to 36</td>
+    </tr>
+  </table>
+
+</body>
+</html>
