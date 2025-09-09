@@ -86,7 +86,7 @@
     .chip-container {
       display: flex;
       align-items: center;
-      margin-top: 200px ;
+      margin-top: 350px ;
       gap: 20px;
     }
 
@@ -230,12 +230,22 @@
   </table>
 
   <script>
-    // La click, toggle ON/OFF monedă
     document.querySelectorAll("td").forEach(cell => {
-      cell.addEventListener("click", () => {
-        cell.classList.toggle("active");
-      });
-    });
+  cell.addEventListener("click", () => {
+    // Get the current sum from the sum-box
+    let betAmount = parseInt(sumBox.textContent);
+    if (!isNaN(betAmount) && betAmount > 0) {
+      // Find the .highlight div inside the cell
+      const highlight = cell.querySelector(".highlight");
+      if (highlight) {
+        // Add the bet amount to the cell's highlight
+        let current = parseInt(highlight.textContent) || 0;
+        highlight.textContent = current + betAmount;
+        cell.classList.add("active");
+      }
+    }
+  });
+});
     let sum = 0;
     const sumBox = document.getElementById("sumBox");
     const minusBtn = document.getElementById("minusBtn");
