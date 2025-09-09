@@ -9,14 +9,14 @@
       height: 100vh;
       display: flex;
       justify-content: center;
-      align-items: flex-end; /* pune tabelul jos */
-      background-color: darkgreen; /* fundalul mesei */
+      align-items: flex-end;
+      background-color: darkgreen;
     }
 
     table {
       border-collapse: collapse;
       margin-bottom: 20px;
-      transform: scale(0.9); /* micșorare (poți schimba între 0.8 și 1.2) */
+      transform: scale(0.9);
     }
 
     td {
@@ -27,6 +27,13 @@
       color: white;
       width: 40px;
       height: 40px;
+      position: relative; /* ca să putem pune cercul galben în mijloc */
+      cursor: pointer;
+      transition: transform 0.1s;
+    }
+
+    td:active {
+      transform: scale(0.9); /* efect de apăsare */
     }
 
     /* culori pentru numere */
@@ -36,70 +43,103 @@
 
     /* celulele mari pentru pariuri */
     .bet { background-color: #f5f5f5; color: black; }
+
+    /* cerc galben (ascuns inițial) */
+    .highlight {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+      margin-left: -10px; /* jumătate din lățime */
+      margin-top: -10px;  /* jumătate din înălțime */
+      background-color: yellow;
+      border-radius: 50%;
+      opacity: 0;
+      transition: opacity 0.2s;
+      pointer-events: none; /* să nu blocheze click-ul */
+    }
+
+    /* activare highlight */
+    .active .highlight {
+      opacity: 1;
+    }
   </style>
 </head>
 <body>
 
   <table>
     <tr>
-      <td rowspan="3" class="green">0</td>
-      <td class="red">3</td>
-      <td class="black">6</td>
-      <td class="red">9</td>
-      <td class="red">12</td>
-      <td class="black">15</td>
-      <td class="red">18</td>
-      <td class="red">21</td>
-      <td class="black">24</td>
-      <td class="red">27</td>
-      <td class="red">30</td>
-      <td class="black">33</td>
-      <td class="red">36</td>
-      <td rowspan="3" class="bet">2 to 1</td>
+      <td rowspan="3" class="green">0<div class="highlight"></div></td>
+      <td class="red">3<div class="highlight"></div></td>
+      <td class="black">6<div class="highlight"></div></td>
+      <td class="red">9<div class="highlight"></div></td>
+      <td class="red">12<div class="highlight"></div></td>
+      <td class="black">15<div class="highlight"></div></td>
+      <td class="red">18<div class="highlight"></div></td>
+      <td class="red">21<div class="highlight"></div></td>
+      <td class="black">24<div class="highlight"></div></td>
+      <td class="red">27<div class="highlight"></div></td>
+      <td class="red">30<div class="highlight"></div></td>
+      <td class="black">33<div class="highlight"></div></td>
+      <td class="red">36<div class="highlight"></div></td>
+      <td rowspan="3" class="bet">2 to 1<div class="highlight"></div></td>
     </tr>
     <tr>
-      <td class="black">2</td>
-      <td class="red">5</td>
-      <td class="black">8</td>
-      <td class="black">11</td>
-      <td class="red">14</td>
-      <td class="black">17</td>
-      <td class="black">20</td>
-      <td class="red">23</td>
-      <td class="black">26</td>
-      <td class="black">29</td>
-      <td class="red">32</td>
-      <td class="black">35</td>
+      <td class="black">2<div class="highlight"></div></td>
+      <td class="red">5<div class="highlight"></div></td>
+      <td class="black">8<div class="highlight"></div></td>
+      <td class="black">11<div class="highlight"></div></td>
+      <td class="red">14<div class="highlight"></div></td>
+      <td class="black">17<div class="highlight"></div></td>
+      <td class="black">20<div class="highlight"></div></td>
+      <td class="red">23<div class="highlight"></div></td>
+      <td class="black">26<div class="highlight"></div></td>
+      <td class="black">29<div class="highlight"></div></td>
+      <td class="red">32<div class="highlight"></div></td>
+      <td class="black">35<div class="highlight"></div></td>
     </tr>
     <tr>
-      <td class="red">1</td>
-      <td class="black">4</td>
-      <td class="red">7</td>
-      <td class="black">10</td>
-      <td class="black">13</td>
-      <td class="red">16</td>
-      <td class="red">19</td>
-      <td class="black">22</td>
-      <td class="red">25</td>
-      <td class="black">28</td>
-      <td class="black">31</td>
-      <td class="red">34</td>
+      <td class="red">1<div class="highlight"></div></td>
+      <td class="black">4<div class="highlight"></div></td>
+      <td class="red">7<div class="highlight"></div></td>
+      <td class="black">10<div class="highlight"></div></td>
+      <td class="black">13<div class="highlight"></div></td>
+      <td class="red">16<div class="highlight"></div></td>
+      <td class="red">19<div class="highlight"></div></td>
+      <td class="black">22<div class="highlight"></div></td>
+      <td class="red">25<div class="highlight"></div></td>
+      <td class="black">28<div class="highlight"></div></td>
+      <td class="black">31<div class="highlight"></div></td>
+      <td class="red">34<div class="highlight"></div></td>
     </tr>
     <tr>
-      <td colspan="4" class="bet">1st 12</td>
-      <td colspan="4" class="bet">2nd 12</td>
-      <td colspan="4" class="bet">3rd 12</td>
-      <td rowspan="2" class="bet">2 to 1</td>
+      <td colspan="4" class="bet">1st 12<div class="highlight"></div></td>
+      <td colspan="4" class="bet">2nd 12<div class="highlight"></div></td>
+      <td colspan="4" class="bet">3rd 12<div class="highlight"></div></td>
+      <td rowspan="2" class="bet">2 to 1<div class="highlight"></div></td>
     </tr>
     <tr>
-      <td colspan="2" class="bet">1 to 18</td>
-      <td colspan="2" class="bet">EVEN</td>
-      <td colspan="2" class="bet">🔴</td>
-      <td colspan="2" class="bet">⚫</td>
-      <td colspan="2" class="bet">ODD</td>
-      <td colspan="2" class="bet">19 to 36</td>
+      <td colspan="2" class="bet">1 to 18<div class="highlight"></div></td>
+      <td colspan="2" class="bet">EVEN<div class="highlight"></div></td>
+      <td colspan="2" class="bet">🔴<div class="highlight"></div></td>
+      <td colspan="2" class="bet">⚫<div class="highlight"></div></td>
+      <td colspan="2" class="bet">ODD<div class="highlight"></div></td>
+      <td colspan="2" class="bet">19 to 36<div class="highlight"></div></td>
     </tr>
   </table>
+
+  <script>
+    // La click, adaugă clasa "active" și arată cercul galben
+    document.querySelectorAll("td").forEach(cell => {
+      cell.addEventListener("click", () => {
+        // elimină highlight-ul de pe alte celule
+        document.querySelectorAll("td").forEach(c => c.classList.remove("active"));
+        // adaugă highlight pe celula apăsată
+        cell.classList.add("active");
+      });
+    });
+  </script>
 
 </body>
 </html>
