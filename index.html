@@ -34,13 +34,19 @@
         }
 
         .navbar {
-      background-color: #002244; /* albastru închis */
-      border-bottom: 2px solid white;
-      padding-right: 10px;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-    }
+  background-color: #002244;   /* albastru închis */
+  border-bottom: 2px solid white;
+  height: 50px;                /* înălțimea barei */
+  width: 100%;                 /* să ocupe toată lățimea paginii */
+  position: fixed;             /* o fixează sus */
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;   /* conținutul merge în dreapta */
+  align-items: center;         /* centrat pe verticală */
+  padding: 0 20px;             /* spațiu interior stânga-dreapta */
+  z-index: 1000;               /* ca să fie deasupra altor elemente */
+}
 
     /* iconița de utilizator */
     .user-icon {
