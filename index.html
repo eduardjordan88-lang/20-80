@@ -32,6 +32,43 @@
             transform: scale(1.05);
             background-color: rgb(0, 0, 200);
         }
+        /* bara de navigație */
+ 
+
+/* stil general pentru iconițe */
+.navbar div {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #002244;
+  cursor: pointer;
+  position: relative; /* necesar pentru badge */
+}
+
+
+
+/* badge-ul de notificări */
+.badge {
+  position: absolute;
+  bottom: 0;     /* dreapta jos */
+  right: 0;
+  background: red;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 1px 4px;
+  min-width: 18px;
+  text-align: center;
+  line-height: 1.2;
+}
+
 
        
 
@@ -68,20 +105,6 @@
   z-index: 1000;
 }
 
-/* stil general pentru iconițe */
-.navbar div {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  background: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 18px;
-  font-weight: bold;
-  color: #002244;
-  cursor: pointer;
-}
 
 /* spațierea dintre iconițe */
 .settings-icon {
@@ -95,31 +118,6 @@
 .notifications-icon {
   margin-left: 15px;
 }
-    /* meniul dropdown */
-    .dropdown {
-      position: absolute;
-      top: 40px;
-      right: 0;
-      background: white;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      display: none;
-      min-width: 150px;
-    }
-
-    .dropdown a {
-      display: block;
-      padding: 10px;
-      text-decoration: none;
-      color: #002244;
-      font-weight: bold;
-    }
-
-    .dropdown a:hover {
-      background: #eee;
-    }
-
     
        </style>
 </head>
@@ -139,6 +137,21 @@
       <a href="#">Profil</a>
     </div>
   </div>
+
+  <div class="navbar">
+  <div class="notifications-icon">
+    ✉️
+    <span class="badge">99+</span>
+  </div>
+  <div class="settings-icon">⚙️</div>
+  <div class="user-icon" id="userIcon">👤</div>
+  <div class="dropdown" id="dropdownMenu">
+    <a href="#">Login</a>
+    <a href="#">Sign Up</a>
+    <a href="#">Profil</a>
+  </div>
+</div>
+
 
 <script>
     const userIcon = document.getElementById("userIcon");
