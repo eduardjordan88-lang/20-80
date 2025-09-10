@@ -53,6 +53,21 @@
             background: #ffd700;
         }
 
+        .top-center-box {
+    border: 2px solid white;
+    border-radius: 8px;
+    padding: 6px 12px;
+    background-color: #ffd700;
+    color: #002244;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-right: 30px;  /* distance from the login button */
+    }
+
         /* Navbar */
         .navbar {
             background-color: #002244;
@@ -142,6 +157,9 @@
     <div class="box" onclick="window.location.href='roulette.html'">Intra la Roulette</div>
 
     <div class="navbar">
+        <div class="top-center-box" onclick="alert('Box clicked!')">
+        Special Box
+        </div>
         <button class="login-btn">Log In</button>
         <div class="notifications-icon" data-tooltip="Notifications">
             ✉️
