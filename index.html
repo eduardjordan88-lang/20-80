@@ -68,6 +68,11 @@
             z-index: 1000;
         }
 
+        <div class="top-center-box" onclick="alert('Box clicked!')">
+         Click Me
+        </div>
+
+
         /* Icons and badges */
         .navbar div, .user-icon {
             width: 35px;
@@ -134,6 +139,33 @@
         .navbar div[data-tooltip]:hover::before {
             opacity: 1;
         }
+
+        .top-center-box {
+    width: calc(3 * 96px); /* 3 times the login button width (assuming login button is 96px wide) */
+    max-width: 300px;       /* optional: prevent it from being too wide on small screens */
+    height: 50px;
+    background-color: #ffd700; /* gold color */
+    color: #002244;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    border: 2px solid white;
+    position: absolute;
+    top: 60px;  /* just below the navbar (navbar height = 50px) */
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: background-color 0.3s, transform 0.2s;
+  }
+
+  .top-center-box:hover {
+    background-color: #ffd633;  /* slightly brighter gold on hover */
+    transform: translateX(-50%) scale(1.05);
+  }
+
     </style>
 </head>
 <body>
@@ -149,6 +181,9 @@
         </div>
         <div class="settings-icon" data-tooltip="Settings">⚙️</div>
         <div class="user-icon" id="userIcon" data-tooltip="Profil">👤</div>
+    </div>
+    <div class="top-center-box" onclick="alert('Box clicked!')">
+        Click Me
     </div>
 
 <script>
