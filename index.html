@@ -48,7 +48,48 @@
   background: #ffd700;      /* aur mai strălucitor la hover */
 }
 
- 
+ /* iconițele trebuie să aibă position: relative */
+.navbar div {
+  position: relative;
+}
+
+/* tooltip ascuns implicit */
+.navbar div[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: -30px;               /* poziție sub iconiță */
+  left: 50%;
+  transform: translateX(-50%);
+  background: black;
+  color: white;
+  padding: 5px 8px;
+  font-size: 12px;
+  border-radius: 5px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* săgețica */
+.navbar div[data-tooltip]::before {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: black;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* afișare tooltip la hover */
+.navbar div[data-tooltip]:hover::after,
+.navbar div[data-tooltip]:hover::before {
+  opacity: 1;
+}
+
 
 /* stil general pentru iconițe */
 .navbar div {
@@ -144,9 +185,14 @@
     </div>
     <div class="navbar">
     <button class="login-btn">Log In</button>
-    <div class="notifications-icon">✉️</div>
-    <div class="settings-icon">⚙️</div>
-    <div class="user-icon" id="userIcon">👤</div>
+    <div class="notifications-icon" data-tooltip="Notifications">
+    ✉️
+    <span class="badge" id="notifBadge">0</span>
+  </div>
+    <div class="settings-icon" data-tooltip="Settings">⚙️</div>
+
+  <div class="user-icon" id="userIcon" data-tooltip="Profil">👤</div>
+
   </div>
 
   <div class="navbar">
