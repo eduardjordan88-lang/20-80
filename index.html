@@ -32,7 +32,22 @@
             transform: scale(1.05);
             background-color: rgb(0, 0, 200);
         }
-        /* bara de navigație */
+       /* buton Log In */
+.login-btn {
+  background: gold;         /* culoare aurie */
+  color: #002244;           /* text albastru închis */
+  font-weight: bold;
+  border: 2px solid white;  /* contur alb */
+  border-radius: 8px;       /* colțuri rotunjite */
+  padding: 6px 12px;
+  cursor: pointer;
+  margin-left: 15px;        /* spațiu față de elementul din stânga */
+}
+
+.login-btn:hover {
+  background: #ffd700;      /* aur mai strălucitor la hover */
+}
+
  
 
 /* stil general pentru iconițe */
@@ -128,6 +143,7 @@
   Roulette
     </div>
     <div class="navbar">
+    <button class="login-btn">Log In</button>
     <div class="notifications-icon">✉️</div>
     <div class="settings-icon">⚙️</div>
     <div class="user-icon" id="userIcon">👤</div>
