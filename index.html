@@ -49,24 +49,49 @@
             margin-left: 15px;
         }
 
+        .top-center-box {
+    width: calc(3 * 96px); /* 3× login button width */
+    height: 40px;           /* slightly smaller than navbar height */
+    background-color: #ffd700;
+    color: #002244;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    border: 2px solid white;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    transition: background-color 0.3s, transform 0.2s;
+    }
+
+   .top-center-box:hover {
+    background-color: #ffd633;
+    transform: scale(1.05);
+    }
+
+
         .login-btn:hover {
             background: #ffd700;
         }
 
         /* Navbar */
         .navbar {
-            background-color: #002244;
-            border-bottom: 2px solid white;
-            height: 50px;
-            width: 100%;
-            position: fixed;
-            top: 0;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            padding: 0 20px;
-            z-index: 1000;
-        }
+  background-color: #002244;
+  border-bottom: 2px solid white;
+  height: 50px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: center; /* center all children horizontally */
+  align-items: center;
+  gap: 20px; /* space between elements */
+  padding: 0 20px;
+  z-index: 1000;
+}
+
+        
 
         <div class="top-center-box" onclick="alert('Box clicked!')">
          Click Me
@@ -87,7 +112,6 @@
             color: #002244;
             cursor: pointer;
             position: relative;
-            margin-left: 15px;
         }
 
         .badge {
@@ -174,17 +198,21 @@
     <div class="box" onclick="window.location.href='roulette.html'">Intra la Roulette</div>
 
     <div class="navbar">
-        <button class="login-btn">Log In</button>
-        <div class="notifications-icon" data-tooltip="Notifications">
-            ✉️
-            <span class="badge" id="notifBadge">0</span>
-        </div>
-        <div class="settings-icon" data-tooltip="Settings">⚙️</div>
-        <div class="user-icon" id="userIcon" data-tooltip="Profil">👤</div>
-    </div>
+    <button class="login-btn">Log In</button>
+
     <div class="top-center-box" onclick="alert('Box clicked!')">
-        Click Me
+        Special Box
     </div>
+
+    <div class="notifications-icon" data-tooltip="Notifications">
+        ✉️
+        <span class="badge" id="notifBadge">0</span>
+    </div>
+
+    <div class="settings-icon" data-tooltip="Settings">⚙️</div>
+    <div class="user-icon" id="userIcon" data-tooltip="Profil">👤</div>
+</div>
+
 
 <script>
     const userIcon = document.getElementById("userIcon");
