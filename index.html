@@ -11,13 +11,16 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
+            gap: 20px;
         }
-        .box{
-            width: 80px;
+
+        .box {
+            width: 120px;
             height: 80px;
             background-color: rgb(4, 0, 255);
             color: white;
-            font-size: 8px;
+            font-size: 16px;
             font-weight: bold;
             display: flex;
             justify-content: center;
@@ -28,186 +31,133 @@
             transition: transform 0.2s, background-color 0.3s;
             text-align: center;
         }
-        .box:hover{
+
+        .box:hover {
             transform: scale(1.05);
             background-color: rgb(0, 0, 200);
         }
-       /* buton Log In */
-.login-btn {
-  background: gold;         /* culoare aurie */
-  color: #002244;           /* text albastru închis */
-  font-weight: bold;
-  border: 2px solid white;  /* contur alb */
-  border-radius: 8px;       /* colțuri rotunjite */
-  padding: 6px 12px;
-  cursor: pointer;
-  margin-left: 15px;        /* spațiu față de elementul din stânga */
-}
 
-.login-btn:hover {
-  background: #ffd700;      /* aur mai strălucitor la hover */
-}
+        /* Log In button */
+        .login-btn {
+            background: gold;
+            color: #002244;
+            font-weight: bold;
+            border: 2px solid white;
+            border-radius: 8px;
+            padding: 6px 12px;
+            cursor: pointer;
+            margin-left: 15px;
+        }
 
- /* iconițele trebuie să aibă position: relative */
-.navbar div {
-  position: relative;
-}
+        .login-btn:hover {
+            background: #ffd700;
+        }
 
-/* tooltip ascuns implicit */
-.navbar div[data-tooltip]::after {
-  content: attr(data-tooltip);
-  position: absolute;
-  bottom: -30px;               /* poziție sub iconiță */
-  left: 50%;
-  transform: translateX(-50%);
-  background: black;
-  color: white;
-  padding: 5px 8px;
-  font-size: 12px;
-  border-radius: 5px;
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s ease-in-out;
-}
+        /* Navbar */
+        .navbar {
+            background-color: #002244;
+            border-bottom: 2px solid white;
+            height: 50px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 0 20px;
+            z-index: 1000;
+        }
 
-/* săgețica */
-.navbar div[data-tooltip]::before {
-  content: "";
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  border: 5px solid transparent;
-  border-top-color: black;
-  opacity: 0;
-  transition: opacity 0.2s ease-in-out;
-}
+        /* Icons and badges */
+        .navbar div, .user-icon {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #002244;
+            cursor: pointer;
+            position: relative;
+            margin-left: 15px;
+        }
 
-/* afișare tooltip la hover */
-.navbar div[data-tooltip]:hover::after,
-.navbar div[data-tooltip]:hover::before {
-  opacity: 1;
-}
+        .badge {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: red;
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            border-radius: 10px;
+            padding: 1px 4px;
+            min-width: 18px;
+            text-align: center;
+            line-height: 1.2;
+        }
 
+        /* Tooltip */
+        .navbar div[data-tooltip]::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: black;
+            color: white;
+            padding: 5px 8px;
+            font-size: 12px;
+            border-radius: 5px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease-in-out;
+        }
 
-/* stil general pentru iconițe */
-.navbar div {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  background: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 18px;
-  font-weight: bold;
-  color: #002244;
-  cursor: pointer;
-  position: relative; /* necesar pentru badge */
-}
+        .navbar div[data-tooltip]::before {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 5px solid transparent;
+            border-top-color: black;
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+        }
 
-
-
-/* badge-ul de notificări */
-.badge {
-  position: absolute;
-  bottom: 0;     /* dreapta jos */
-  right: 0;
-  background: red;
-  color: white;
-  font-size: 10px;
-  font-weight: bold;
-  border-radius: 10px;
-  padding: 1px 4px;
-  min-width: 18px;
-  text-align: center;
-  line-height: 1.2;
-}
-
-
-       
-
-
-    /* iconița de utilizator */
-    .user-icon {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 18px;
-      font-weight: bold;
-      color: #002244;
-      cursor: pointer;
-      position: relative;
-    }
-
-    /* bara de navigație */
-.navbar {
-  background-color: #002244;
-  border-bottom: 2px solid white;
-  height: 50px;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  right: 0;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 0 20px;
-  z-index: 1000;
-}
-
-
-/* spațierea dintre iconițe */
-.settings-icon {
-  margin-left: 15px;
-}
-
-.user-icon {
-  margin-left: 15px;
-}
-
-.notifications-icon {
-  margin-left: 15px;
-}
-    
-       </style>
+        .navbar div[data-tooltip]:hover::after,
+        .navbar div[data-tooltip]:hover::before {
+            opacity: 1;
+        }
+    </style>
 </head>
 <body>
-    <div class="box" onclick="window.location.href='joc.html'">Intra in Joc
-    </div>
-    <div class="box" onclick="window.location.href='roulette.html'">Intra la
-  Roulette
-    </div>
+
+    <div class="box" onclick="window.location.href='joc.html'">Intra in Joc</div>
+    <div class="box" onclick="window.location.href='roulette.html'">Intra la Roulette</div>
+
     <div class="navbar">
-    <button class="login-btn">Log In</button>
-    <div class="notifications-icon" data-tooltip="Notifications">
-    ✉️
-    <span class="badge" id="notifBadge">0</span>
-  </div>
-    <div class="settings-icon" data-tooltip="Settings">⚙️</div>
-
-  <div class="user-icon" id="userIcon" data-tooltip="Profil">👤</div>
-
-  </div>
-
-  <div class="navbar">
-  <div class="notifications-icon">
-    ✉️
-    <span class="badge">99+</span>
-  </div>
-  <div class="settings-icon">⚙️</div>
-  <div class="user-icon" id="userIcon">👤</div>
-</div>
-
+        <button class="login-btn">Log In</button>
+        <div class="notifications-icon" data-tooltip="Notifications">
+            ✉️
+            <span class="badge" id="notifBadge">0</span>
+        </div>
+        <div class="settings-icon" data-tooltip="Settings">⚙️</div>
+        <div class="user-icon" id="userIcon" data-tooltip="Profil">👤</div>
+    </div>
 
 <script>
     const userIcon = document.getElementById("userIcon");
-   
-  </script>
+    // Example: add click behavior
+    userIcon.addEventListener("click", () => {
+        alert("Profil clicked!");
+    });
+</script>
+
 </body>
-</html>   
+</html>
