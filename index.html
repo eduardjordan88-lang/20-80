@@ -39,7 +39,7 @@
 
         /* Log In button */
         .login-btn {
-            background: gold;
+            background: rgb(255, 217, 2);
             color: #002244;
             font-weight: bold;
             border: 2px solid white;
@@ -49,12 +49,8 @@
             margin-left: 15px;
         }
 
-        .login-btn:hover {
-            background: #ffd700;
-        }
-
         .top-center-box {
-            background: gold;
+            background: rgb(76, 63, 190);
             color: #002244;
             font-weight: bold;
             border: 2px solid white;
@@ -64,7 +60,7 @@
             padding: 6px 12px;
             cursor: pointer;
             margin-left: 15px;
-            margin-right: 60px;
+            margin-right: 300px;
     }  
 
         /* Navbar */
@@ -148,6 +144,65 @@
         .navbar div[data-tooltip]:hover::before {
             opacity: 1;
         }
+    
+      /* Popup background */
+ .popup {
+  display: none; /* hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5); /* semi-transparent dark overlay */
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+/* Popup box */
+ .popup-content {
+  background-color: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+}
+
+/* Close button */
+ .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Inputs */
+ .popup-content input {
+  padding: 8px 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Submit button */
+ #submitLogin {
+  background-color: #002244;
+  color: white;
+  font-weight: bold;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+ #submitLogin:hover {
+  background-color: #0044aa;
+}
+
     </style>
 </head>
 <body>
@@ -166,12 +221,52 @@
         <div class="user-icon" id="userIcon" data-tooltip="Profil">👤</div>
     </div>
 
+    <!-- Login Popup -->
+    <div id="loginPopup" class="popup">
+      <div class="popup-content">
+        <span class="close-btn">&times;</span>
+        <h2>Log in with your Gmail and password</h2>
+        <input type="email" placeholder="Gmail" id="emailInput">
+        <input type="password" placeholder="Password" id="passwordInput">
+        <button id="submitLogin">Log In</button>
+      </div>
+    </div>
+
 <script>
     const userIcon = document.getElementById("userIcon");
     // Example: add click behavior
     userIcon.addEventListener("click", () => {
         alert("Profil clicked!");
     });
+
+    const loginBtn = document.querySelector(".login-btn");
+  const popup = document.getElementById("loginPopup");
+  const closeBtn = document.querySelector(".close-btn");
+
+  // Show popup when login button clicked
+  loginBtn.addEventListener("click", () => {
+    popup.style.display = "flex";
+  });
+
+  // Close popup when X is clicked
+  closeBtn.addEventListener("click", () => {
+    popup.style.display = "none";
+  });
+
+  // Close popup if user clicks outside the content
+  window.addEventListener("click", (e) => {
+    if (e.target == popup) {
+      popup.style.display = "none";
+    }
+  });
+
+  // Optional: handle submit
+  document.getElementById("submitLogin").addEventListener("click", () => {
+    const email = document.getElementById("emailInput").value;
+    const password = document.getElementById("passwordInput").value;
+    alert(`Email: ${email}\nPassword: ${password}`);
+    popup.style.display = "none"; // close popup
+  });
 </script>
 
 </body>
