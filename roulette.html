@@ -1,277 +1,136 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8">
-  <title>Roulette</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: flex-end; 
-      
-      background-color: darkgreen;
-    }
+<meta charset="UTF-8">
+<title>Roulette Game</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #001f4d; /* dark blue background */
+    font-family: Arial, sans-serif;
+    color: white;
+  }
 
-    table {
-      border-collapse: collapse;
-      margin-bottom: 20px;
-      transform: scale(0.9);
-    }
-
-    td {
-      border: 2px solid white;
-      text-align: center;
-      font-weight: bold;
-      font-size: 16px;
-      color: white;
-      width: 40px;
-      height: 40px;
-      position: relative;
-      cursor: pointer;
-      transition: transform 0.1s;
-    }
-
-    td:active {
-      transform: scale(0.9);
-    }
-
-    /* culori pentru numere */
-    .red { background-color: red; }
-    .black { background-color: black; }
-    .green { background-color: green; }
-
-    /* celulele mari pentru pariuri */
-    .bet { background-color: #f5f5f5; color: black; }
-
-    /* monedă galbenă */
-    .highlight {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 24px;
-      height: 24px;
-      margin-left: -12px;
-      margin-top: -12px;
-      background: radial-gradient(circle at 30% 30%, #fff176, #fbc02d);
-      border: 2px solid #b8860b;
-      border-radius: 50%;
-      box-shadow: 0 0 6px rgba(255, 215, 0, 0.8);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 10px;
-      font-weight: bold;
-      color: #5d4037;
-      opacity: 0;
-      transition: opacity 0.2s;
-      pointer-events: none;
-    }
-
-    /* activare monedă */
-    .active .highlight {
-      opacity: 1;
-    }
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: flex-end; 
-      background-color: darkgreen;
-    }
-
-    /* containerul pentru chipuri + tabel suma + buton minus */
-    .chip-container {
-      display: flex;
-      align-items: center;
-      margin-top: 350px ;
-      gap: 20px;
-    }
-
-    /* chipuri */
-    .chip {
-  width: 23px;   /* 70 / 3 ≈ 23 */
-  height: 23px;  /* 70 / 3 ≈ 23 */
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: bold;
-  font-size: 6px; /* 18 / 3 = 6 */
-  color: white;
-  position: relative;
-  cursor: pointer;
-  box-shadow: 0 0 3px rgba(0,0,0,0.6); /* redus și shadow-ul */
-}
-
-/* cerc interior */
-.chip::before {
-  content: "";
-  position: absolute;
-  width: 18px;   /* 55 / 3 ≈ 18 */
-  height: 18px;  /* 55 / 3 ≈ 18 */
-  border-radius: 50%;
-  border: 1px dashed white; /* mai subțire */
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-/* dungile albe de pe margine */
-.chip::after {
-  content: "";
-  position: absolute;
-  width: 23px;   /* 70 / 3 ≈ 23 */
-  height: 23px;  /* 70 / 3 ≈ 23 */
-  border-radius: 50%;
-  background: repeating-conic-gradient(
-    white 0deg 10deg,
-    transparent 10deg 30deg
-  );
-  -webkit-mask: radial-gradient(circle 10px, transparent 9px, black 10px); /* micșorat */
-  mask: radial-gradient(circle 10px, transparent 9px, black 10px);
-}
-
-    
-    .chip:active { transform: scale(0.9); }
-
-    .chip-1   { background: orange; }
-    .chip-5   { background: red; }
-    .chip-25  { background: green; }
-    .chip-50  { background: dodgerblue; }
-    .chip-100 { background: black; }
-    .chip-500 { background: purple; }
-
-    .chip span {
-      position: relative;
-      z-index: 2;
-    }
-
-    /* tabel central suma */
-    .sum-box {
-      width: 120px;
-      height: 50px;
-      background: red;
-      border: 3px solid gold;
-      border-radius: 8px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 20px;
-      font-weight: bold;
-      color: white;
-    }
-
-    /* buton minus */
-    .minus-box {
-      width: 50px;
-      height: 50px;
-      background: #333;
-      color: white;
-      font-size: 24px;
-      font-weight: bold;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 6px;
-      cursor: pointer;
-      user-select: none;
-    }
-    .minus-box:active {
-      background: #555;
-    }
-   
-.wheel-wrapper {
-  position: relative;
-  width: 100%;
-  height: 400px; /* same as wheel size */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px; /* space between wheel and chips/table */
-  z-index: 5;
-}
-
-.roulette-container {
-  position: relative;
-  width: 400px;
-  height: 400px;
-  z-index: 10;
-}
-
-
-/* Wheel container */
-.roulette-container {
+  /* --- Roulette Wheel --- */
+  .roulette-container {
     position: relative;
-    width: 400px;
-    height: 400px;
-}
+    width: 450px;
+    height: 450px;
+    margin-top: 30px;
+  }
 
-/* Roulette wheel */
-.roulette-wheel {
+  .roulette-wheel {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    border: 16px solid #222; /* outer rim */
+    border: 16px solid #222;
+    background: radial-gradient(circle at center, #111 0%, #333 80%);
     position: relative;
     overflow: hidden;
-    box-shadow: inset 0 0 20px rgba(0,0,0,0.5), 0 0 20px rgba(0,0,0,0.5);
-}
+    box-shadow: inset 0 0 30px rgba(0,0,0,0.7), 0 0 20px rgba(0,0,0,0.5);
+  }
 
-/* Numbers segments */
-.segment {
+  .segment {
     position: absolute;
     width: 50%;
     height: 50%;
     top: 50%;
     left: 50%;
-    transform-origin: 0% 0%;
-    border-top: 60px solid red; /* placeholder color */
+    transform-origin: 0 0;
     border-left: 4px solid #222;
     clip-path: polygon(0 0, 100% 0, 0 100%);
-}
+  }
 
-/* Dynamically assign rotation and color */
+  .segment-label {
+    position: absolute;
+    top: -140%;
+    left: 0;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 0 3px black;
+  }
 
-  </style>
+  /* Pointer at top */
+  .roulette-pointer {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 40px;
+    background: red;
+    border-radius: 7px;
+    z-index: 10;
+    box-shadow: 0 0 8px black;
+  }
+
+  /* --- Roulette Table --- */
+  table {
+    border-collapse: collapse;
+    margin-top: 30px;
+  }
+
+  td {
+    border: 2px solid white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.1s;
+  }
+
+  td.red { background-color: #c70039; }
+  td.black { background-color: #111; }
+  td.green { background-color: #00a86b; }
+
+  td.bet { background-color: #444; color: white; }
+
+  td:active { transform: scale(0.9); }
+
+  /* Highlight for chip placement */
+  .highlight {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    margin-left: -12px;
+    margin-top: -12px;
+    background: radial-gradient(circle at 30% 30%, #fff176, #fbc02d);
+    border: 2px solid #b8860b;
+    box-shadow: 0 0 6px rgba(255, 215, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    font-weight: bold;
+    color: #5d4037;
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+  }
+
+  .active .highlight { opacity: 1; }
+</style>
 </head>
 <body>
 
-<!-- Roulette wheel container -->
-<div class="wheel-wrapper">
+  <!-- Roulette Wheel -->
   <div class="roulette-container">
     <div class="roulette-wheel" id="wheel"></div>
-    <!-- pointer -->
-    <div style="position:absolute; top:-10px; left:50%; transform:translateX(-50%); width:10px; height:30px; background:red; z-index:10; border-radius:5px;"></div>
-  </div>
-</div>
-
-
-  <div class="chip-container">
-    <!-- chipuri -->
-    <div class="chip chip-1" data-value="1">1</div>
-    <div class="chip chip-5" data-value="5">5</div>
-    <div class="chip chip-25" data-value="25">25</div>
-    <div class="chip chip-50" data-value="50">50</div>
-    <div class="chip chip-100" data-value="100">100</div>
-    <div class="chip chip-500" data-value="500">500</div>
-
-    <!-- tabel central suma -->
-    <div class="sum-box" id="sumBox">0</div>
-  
-    <!-- buton minus -->
-    <div class="minus-box" id="minusBtn">-</div>
+    <div class="roulette-pointer"></div>
   </div>
 
-
-<div class="roulette-container">
-    <div class="roulette-wheel" id="wheel"></div>
-    <!-- pointer -->
-    <div style="position:absolute; top:-10px; left:50%; transform:translateX(-50%); width:10px; height:30px; background:red; z-index:10; border-radius:5px;"></div>
-</div>
-
+  <!-- Roulette Table -->
   <table>
     <tr>
       <td rowspan="3" class="green">0<div class="highlight"></div></td>
@@ -287,7 +146,6 @@
       <td class="red">30<div class="highlight"></div></td>
       <td class="black">33<div class="highlight"></div></td>
       <td class="red">36<div class="highlight"></div></td>
-      <td rowspan="3" class="bet">2 to 1<div class="highlight"></div></td>
     </tr>
     <tr>
       <td class="black">2<div class="highlight"></div></td>
@@ -321,168 +179,45 @@
       <td colspan="4" class="bet">1st 12<div class="highlight"></div></td>
       <td colspan="4" class="bet">2nd 12<div class="highlight"></div></td>
       <td colspan="4" class="bet">3rd 12<div class="highlight"></div></td>
-      <td rowspan="2" class="bet">2 to 1<div class="highlight"></div></td>
     </tr>
     <tr>
       <td colspan="2" class="bet">1 to 18<div class="highlight"></div></td>
       <td colspan="2" class="bet">EVEN<div class="highlight"></div></td>
-      <td colspan="2" class="bet">🔴<div class="highlight"></div></td>
-      <td colspan="2" class="bet">⚫<div class="highlight"></div></td>
+      <td colspan="2" class="bet">RED<div class="highlight"></div></td>
+      <td colspan="2" class="bet">BLACK<div class="highlight"></div></td>
       <td colspan="2" class="bet">ODD<div class="highlight"></div></td>
       <td colspan="2" class="bet">19 to 36<div class="highlight"></div></td>
     </tr>
   </table>
 
+  <!-- JS to create wheel numbers -->
   <script>
-    document.querySelectorAll("td").forEach(cell => {
-  cell.addEventListener("click", () => {
-    // Get the current sum from the sum-box
-    let betAmount = parseInt(sumBox.textContent);
-    if (!isNaN(betAmount) && betAmount > 0) {
-      // Find the .highlight div inside the cell
-      const highlight = cell.querySelector(".highlight");
-      if (highlight) {
-        // Add the bet amount to the cell's highlight
-        let current = parseInt(highlight.textContent) || 0;
-        highlight.textContent = current + betAmount;
-        cell.classList.add("active");
-      }
-    }
-  });
-});
-document.querySelectorAll("td").forEach(cell => {
-  cell.addEventListener("contextmenu", (e) => {
-    e.preventDefault(); // Prevent the default context menu
-    const highlight = cell.querySelector(".highlight");
-    if (highlight) {
-      highlight.textContent = "";
-      cell.classList.remove("active");
-    }
-  });
-});
-    let sum = 0;
-    const sumBox = document.getElementById("sumBox");
-    const minusBtn = document.getElementById("minusBtn");
+    const wheel = document.getElementById("wheel");
+    const numbers = [
+      0,32,15,19,4,21,2,25,17,34,6,27,13,36,11,30,8,23,10,5,
+      24,16,33,1,20,14,31,9,22,18,29,7,28,12,35,3,26
+    ];
+    const colors = [
+      "green","red","black","red","black","red","black","red","black","red",
+      "black","red","black","red","black","red","black","red","black","red",
+      "black","red","black","red","black","red","black","red","black","red",
+      "black","red","black","red","black","red","black"
+    ];
 
-    // adăugare sumă la click pe chip
-    document.querySelectorAll(".chip").forEach(chip => {
-      chip.addEventListener("click", () => {
-        let val = parseInt(chip.getAttribute("data-value"));
-        sum += val;
-        sumBox.textContent = sum;
-      });
+    numbers.forEach((num, i) => {
+      const segment = document.createElement("div");
+      segment.className = "segment";
+      segment.style.transform = `rotate(${i*(360/numbers.length)}deg)`;
+      segment.style.borderTop = `60px solid ${colors[i]}`;
+
+      const label = document.createElement("div");
+      label.className = "segment-label";
+      label.textContent = num;
+      label.style.transform = `rotate(${360/numbers.length/2}deg) translateX(50%) rotate(-${i*(360/numbers.length)}deg)`;
+      segment.appendChild(label);
+
+      wheel.appendChild(segment);
     });
-
-    // scădere sumă la click/hold pe minus
-    let interval, speed = 500, timer;
-
-    const decrease = () => {
-      if (sum > 0) {
-        sum -= 1;
-        sumBox.textContent = sum;
-      }
-    };
-
-    minusBtn.addEventListener("mousedown", () => {
-      decrease(); // scade imediat
-      speed = 500; // reset viteză
-      interval = setInterval(decrease, speed);
-
-      // crește viteza la fiecare secundă
-      timer = setInterval(() => {
-        clearInterval(interval);
-        speed = Math.max(50, speed / 2); // dublează viteza
-        interval = setInterval(decrease, speed);
-      }, 1000);
-    });
-
-    minusBtn.addEventListener("mouseup", () => {
-      clearInterval(interval);
-      clearInterval(timer);
-    });
-
-    minusBtn.addEventListener("mouseleave", () => {
-      clearInterval(interval);
-      clearInterval(timer);
-    });
-   sumBox.addEventListener("dblclick", showInput);
-sumBox.addEventListener("touchstart", showInput);
-
-function showInput() {
-  if (sumBox.querySelector("input")) return; // Prevent multiple inputs
-  const input = document.createElement("input");
-  input.type = "number";
-  input.value = sum;
-  input.style.width = "100%";
-  input.style.height = "100%";
-  input.style.fontSize = "20px";
-  input.style.textAlign = "center";
-  input.style.border = "none";
-  input.style.background = "red";
-  input.style.color = "white";
-  input.style.fontWeight = "bold";
-  input.style.borderRadius = "8px";
-
-  sumBox.textContent = "";
-  sumBox.appendChild(input);
-  input.focus();
-
-  function updateSum() {
-    let newVal = parseInt(input.value);
-    if (!isNaN(newVal) && newVal >= 0) {
-      sum = newVal;
-      sumBox.textContent = sum;
-    } else {
-      sumBox.textContent = sum;
-    }
-  }
-
-  input.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
-      updateSum();
-    }
-  });
-  input.addEventListener("blur", updateSum);
-    }
-
-const wheel = document.getElementById("wheel");
-const numbers = [
-    0,32,15,19,4,21,2,25,17,34,6,27,13,36,11,30,8,23,10,5,
-    24,16,33,1,20,14,31,9,22,18,29,7,28,12,35,3,26
-];
-const colors = [
-    "green","red","black","red","black","red","black","red","black","red",
-    "black","red","black","red","black","red","black","red","black","red",
-    "black","red","black","red","black","red","black","red","black","red",
-    "black","red","black","red","black","red","black"
-];
-
-numbers.forEach((num, i) => {
-    const segment = document.createElement("div");
-    segment.className = "segment";
-    segment.style.transform = `rotate(${i * (360/numbers.length)}deg)`;
-    segment.style.borderTopColor = colors[i];
-    
-    // Add number label
-    const label = document.createElement("div");
-    label.textContent = num;
-    label.style.position = "absolute";
-    label.style.top = "-140%";
-    label.style.left = "0";
-    label.style.transform = `rotate(${360/numbers.length/2}deg) translateX(50%) rotate(-${i * (360/numbers.length)}deg)`;
-    label.style.fontSize = "14px";
-    label.style.fontWeight = "bold";
-    label.style.color = "white";
-    segment.appendChild(label);
-    
-    wheel.appendChild(segment);
-});
-
-     </script>
-  </body>
-  </html>
-
-
-
-
-
+  </script>
+</body>
+</html>
